@@ -37,11 +37,7 @@ class CachePool implements CacheItemPoolInterface
 		);
 	}
 
-	/**
-	 * @param string $key
-	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint
-	 */
-	public function getItem($key): CacheItemInterface
+	public function getItem(string $key): CacheItemInterface
 	{
 		self::assertKey($key);
 
@@ -69,11 +65,7 @@ class CachePool implements CacheItemPoolInterface
 		}
 	}
 
-	/**
-	 * @param string $key
-	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint
-	 */
-	public function hasItem($key): bool
+	public function hasItem(string $key): bool
 	{
 		return $this->getItem($key)->isHit();
 	}
@@ -89,11 +81,7 @@ class CachePool implements CacheItemPoolInterface
 		return true;
 	}
 
-	/**
-	 * @param string $key
-	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint
-	 */
-	public function deleteItem($key): bool
+	public function deleteItem(string $key): bool
 	{
 		return $this->deleteItems([$key]);
 	}

@@ -29,10 +29,7 @@ class CacheItem implements CacheItemInterface
 		return $this->key;
 	}
 
-	/**
-	 * @return mixed
-	 */
-	public function get()
+	public function get(): mixed
 	{
 		return $this->value;
 	}
@@ -42,23 +39,14 @@ class CacheItem implements CacheItemInterface
 		return $this->hit;
 	}
 
-	/**
-	 * @param mixed $value
-	 * @return static
-	 */
-	public function set($value): self
+	public function set(mixed $value): static
 	{
 		$this->value = $value;
 
 		return $this;
 	}
 
-	/**
-	 * @param DateTimeInterface|mixed|null $expiration
-	 * @return static
-	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint
-	 */
-	public function expiresAt($expiration): self
+	public function expiresAt(?DateTimeInterface $expiration): static
 	{
 		if ($expiration === null) {
 			$this->dependencies[Cache::EXPIRE] = null;
@@ -77,11 +65,7 @@ class CacheItem implements CacheItemInterface
 		);
 	}
 
-	/**
-	 * @param int|DateInterval|mixed|null $time
-	 * @return static
-	 */
-	public function expiresAfter($time): self
+	public function expiresAfter(DateInterval|int|null $time): static
 	{
 		if ($time === null) {
 			$this->dependencies[Cache::EXPIRE] = null;
